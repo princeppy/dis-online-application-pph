@@ -1,0 +1,154 @@
+[
+	{
+		"id": "childReferredForTesting",
+		"required": false,
+		"isMutli": false,
+		"question": "Has your child ever been referred for and/or received psychological, educational or cognitive testing?",
+		"choice": [
+			{
+				"value": "yes",
+				"display": "YES, please provide reports"
+			}, {
+				"value": "no",
+				"display": "NO"
+			}
+		],
+		"text": false
+	}, {
+		"id": "specificLearningAbility",
+		"required": false,
+		"isMutli": false,
+		"question": "Has your child been diagnosed with a specific learning disability?",
+		"choice": [
+			{
+				"value": "yes",
+				"display": "YES, please provide reports"
+			}, {
+				"value": "no",
+				"display": "NO"
+			}
+		],
+		"text": false
+	}, {
+		"id": "learningSupport",
+		"required": false,
+		"question": "Has your child received learning support?",
+		"isMutli": false,
+		"choice": [
+			{
+				"value": "yes",
+				"display": "YES, please provide reports"
+			}, {
+				"value": "no",
+				"display": "NO"
+			}
+		],
+		"text": false
+	}, {
+		"id": "ell_eslSupport",
+		"required": false,
+		"isMutli": false,
+		"question": "Has your child received ELL/ESL support (English language support)",
+		"choice": [
+			{
+				"value": "yes",
+				"display": "YES, please provide reports"
+			}, {
+				"value": "no",
+				"display": "NO"
+			}
+		],
+		"text": false
+	}, {
+		"id": "5",
+		"required": false,
+		"isMutli": false,
+		"question": "What level would you classify your child’s Arabic?",
+		"choice": [],
+		"text": false
+	}, {
+		"id": "speaking_arabic",
+		"required": false,
+		"isMutli": false,
+		"question": "Speaking",
+		"choice": [
+			{
+				"value": "beginner",
+				"display": "Beginner"
+			}, {
+				"value": "intermediate",
+				"display": "Intermediate"
+			}, {
+				"value": "advanced",
+				"display": "Advanced"
+			}
+		],
+		"text": false
+	}, {
+		"id": "reading_arabic",
+		"required": false,
+		"isMutli": false,
+		"question": "Reading",
+		"choice": [
+			{
+				"value": "beginner",
+				"display": "Beginner"
+			}, {
+				"value": "intermediate",
+				"display": "Intermediate"
+			}, {
+				"value": "advanced",
+				"display": "Advanced"
+			}
+		],
+		"text": false
+	}, {
+		"id": "writing_arabic",
+		"required": false,
+		"isMutli": false,
+		"question": "Writing",
+		"choice": [
+			{
+				"value": "beginner",
+				"display": "Beginner"
+			}, {
+				"value": "intermediate",
+				"display": "Intermediate"
+			}, {
+				"value": "advanced",
+				"display": "Advanced"
+			}
+		],
+		"text": false
+	}, {
+		"id": "primaryLangAtHome",
+		"required": true,
+		"isMutli": false,
+		"question": "Primary Language spoken at home ?",
+		"choice": [],
+		"text": true
+	}, {
+		"id": "otherLangAtHome",
+		"required": false,
+		"isMutli": false,
+		"question": "Other language(s) spoken at home",
+		"choice": [],
+		"text": true
+	}, {
+		"id": "seriousAllergies",
+		"required": false,
+		"isMutli": false,
+		"question": "Does you child suffer from any serious allergies?",
+		"choice": [
+			{
+				"value": "yes",
+				"display": "YES, please specify",
+				"text": true
+			}, {
+				"value": "no",
+				"display": "NO"
+			}
+		],
+		"text": false
+	}
+]

@@ -1,0 +1,525 @@
+<div class="container">
+
+    <form name="stuApp">
+
+        <div class="row spacing" ng-init="getJsonData();">
+
+            <div class="col-xs-12 col-sm-4">
+                <img src="images/logo.png" class="img-responsive" />
+            </div>
+            <div class="col-xs-12 col-sm-6 text-center mt10 mb10">
+                <h1>Enrolment Application</h1>
+                <h1>{{ vm.academicYear }}</h1>
+            </div>
+            <div class="col-xs-12 col-sm-2 mb10 text-center">
+                <img src="" width="95" height="120px" alt="student image" ng-model="app.student_image" id="stu_img" />
+            </div>
+
+            <div class="col-xs-12 col-sm-2"><label for="application_date">Application Date</label></div>
+            <div class="col-xs-12 col-sm-4"><input class="form-control form-line" type="text" ng-readonly="true" ng-model="app.application_date" /></div>
+
+            <div class="col-xs-12 col-sm-2"><label for="test_date">Test Date</label></div>
+            <div class="col-xs-12 col-sm-4"><input class="form-control form-line" type="text" ng-readonly="true" ng-model="app.test_date" /></div>
+
+
+            <div class="col-xs-12">
+                <h2 class="text-uppercase">
+                    Student Information - (as per passport)
+                    <span class="pull-right"><button class="btn btn-primary upload-img" type="button" ng-click="choose_img()">Upload Image</button>
+			<input type="file" accept="image/*" style="display: none;" id="img_file" name="stu_img_upload" ng-model="app.profile_img" onchange="displayUploadImg(this);" /></span>
+                </h2>
+            </div>
+
+            <div class="col-xs-12"><small>For Office use only</small></div>
+
+            <div class="col-xs-12 col-sm-2">
+                <label><span class="req-imp">*</span>Family Name 
+		    <span class="small">(last name)</span></label>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <input type="text" class="form-control input-req" name="last_name" ng-model="app.last_name" required />
+            </div>
+
+            <div class="col-xs-12 col-sm-2">
+                <label><span class="req-imp">*</span>First Name </label>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <input type="text" class="form-control input-req" name="first_name" ng-model="app.first_name" required />
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-12 col-sm-2">
+                <label>Middle Names</label>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <input type="text" class="form-control" name="middle_name" ng-model="app.middle_name" />
+            </div>
+
+            <div class="col-xs-12 col-sm-2">
+                <label>Preferred Name</label>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control " name="preferred_name" ng-model="app.preferred_name" />
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-2">
+                <label><span class="req-imp">*</span>Date of Birth </label>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="date" class="form-control input-req" name="dob" ng-model="app.dob" required />
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-2">
+                <label><span class="req-imp">*</span>Place of Birth </label>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control input-req" name="birth_place" ng-model="app.birth_place" required />
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-2">
+                <label><span class="req-imp">*</span>Citizenship </label>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <select class="form-control input-req" name="citizenship" ng-model="app.citizenship" required>
+				<option></option>
+				<option ng-repeat="citizenship in vm.datas.NAT" value='{{ citizenship.code }}'>{{ citizenship.description }}</option>
+			</select>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-2">
+                <label> <span class="req-imp">*</span>Passport Number</label>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control input-req" name="num_passport" ng-model="app.num_passport" required />
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-2">
+                <label><span class="req-imp">*</span>Gender </label>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <label class="mr10"><input  type="radio" name="gender" value="Male" checked="checked" ng-model="app.gender" /> Male</label>
+                    <label><input type="radio"  name="gender" value="Female" ng-model="app.gender" /> Female</label>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-2">
+                <label><span class="req-imp">*</span>Religion </label>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <select class="form-control input-req" name="citizenship" ng-model="app.religion" required>
+					<option></option>
+					<option ng-repeat="religion in vm.datas.REL" value='{{ religion.code }}'>{{ religion.description }}</option>
+				</select>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <h2 class="text-uppercase">
+                    Academic History</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr style="background-color: #d8d8d8;">
+                                <th></th>
+                                <th>School</th>
+                                <th>Curriculum</th>
+                                <th>Country/Region</th>
+                                <th>Years attended<br />in school</th>
+                            </tr>
+                        </thead>
+                        <tbody id="previous_schools">
+                            <tr>
+                                <td>Current<br />School</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-req" name="curr_school" ng-model="app.curr_school" required />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-req" name="curr_curriculum" ng-model="app.curr_curriculum" required />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <select type="text" class="form-control input-req" name="curr_country" ng-model="app.curr_country" required>
+							<option></option>
+							<option ng-repeat="ctr in vm.datas.OSR" value='{{ ctr.code }}'>{{ ctr.description }}</option>
+						</select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-req" name="curr_yrs" ng-model="app.curr_yrs" required />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Previous<br />School</td>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="prev_school[]" ng-model="app.prev.school.name[0]" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <select type="text" class="form-control" name="prev_country[]" ng-model="app.prev.school.country[0]">
+							<option></option>
+							<option ng-repeat="ctr in vm.datas.OSR" value='{{ ctr.code }}'>{{ ctr.description }}</option>
+						</select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="prev_yrs[]" ng-model="app.prev.school.yrs[0]" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><button class="btn-link" ng-click="add_more_prevSchool();"><span class="glyphicon glyphicon-plus"></span> Add</button></td>
+                                <td colspan="4"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-xs-12">
+                <h2>PARENT'S CONTACT INFORMATION</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr style="background-color: #d8d8d8;">
+                                <th></th>
+                                <th>Father</th>
+                                <th>Mother</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="req-imp">*</span>Last Name<br /></td>
+                                <td>
+                                    <input type="text" class="form-control input-req" name="father_last_name" ng-model="app.father_last_name" required />
+
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control input-req" name="mother_last_name" ng-model="app.mother_last_name" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="req-imp">*</span>First Name<br /></td>
+                                <td>
+                                    <input type="text" class="form-control input-req" name="father_first_name" ng-model="app.father_first_name" required />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control input-req" name="mother_first_name" ng-model="app.mother_first_name" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="req-imp">*</span>Citizenship<br /></td>
+                                <td>
+                                    <select class="form-control input-req" name="father_citizenship" ng-model="app.father_citizenship" required>
+							<option></option>
+							<option ng-repeat="citizenship in vm.datas.NAT" value='{{ citizenship.code }}'>{{ citizenship.description }}</option>
+						</select>
+                                </td>
+                                <td>
+                                    <select class="form-control input-req" name="mother_citizenship" ng-model="app.mother_citizenship">
+							<option></option>
+							<option ng-repeat="citizenship in vm.datas.NAT" value='{{ citizenship.code }}'>{{ citizenship.description }}</option>
+						</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="req-imp">*</span>Occupation<br /></td>
+                                <td>
+                                    <select class="form-control input-req" name="father_occupation" ng-model="app.father_occupation" required>
+							<option></option>
+							<option ng-repeat="occupation in vm.datas.OCP | orderBy: 'description'" value='{{ occupation.code }}'>{{ occupation.description }}</option>
+						</select>
+                                </td>
+                                <td>
+                                    <select class="form-control input-req" name="mother_occupation" ng-model="app.mother_occupation" required>
+							<option></option>
+							<option ng-repeat="occupation in vm.datas.OCP | orderBy: 'description'" value='{{ occupation.code }}'>{{ occupation.description }}</option>
+						</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="req-imp">*</span>Company's Name<br /></td>
+                                <td>
+                                    <select class="form-control input-req" name="father_occupation" ng-model="app.father_company_name" required>
+							<option></option>
+							<option ng-repeat="occupation in vm.datas.OCP | orderBy: 'description'" value='{{ occupation.code }}'>{{ occupation.description }}</option>
+						</select>
+                                </td>
+                                <td>
+                                    <select class="form-control input-req" name="mother_occupation" ng-model="app.mother_company_name" required>
+							<option></option>
+							<option ng-repeat="occupation in vm.datas.OCP| orderBy: 'description'" value='{{ occupation.code }}'>{{ occupation.description }}</option>
+						</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>P.O. Box</td>
+                                <td>
+                                    <input type="text" class="form-control" name="father_pobox" ng-model="app.father_pobox" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="mother_pobox" ng-model="app.mother_pobox" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Business Phone</td>
+                                <td>
+                                    <input type="text" class="form-control" name="father_business_phone" ng-model="app.father_business_phone" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="mother_business_phone" ng-model="app.mother_business_phone" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Home Phone</td>
+                                <td>
+                                    <input type="text" class="form-control" name="father_home_phone" ng-model="app.father_home_phone" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="mother_home_phone" ng-model="app.mother_home_phone" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mobile Phone<span class="req-imp">*</span><br /></td>
+                                <td>
+                                    <input type="text" class="form-control input-req" name="father_mobile" ng-model="app.father_mobile" required />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control input-req" name="mother_mobile" ng-model="app.mother_mobile" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="req-imp">*</span>Email<br /></td>
+                                <td>
+                                    <input type="text" class="form-control input-req" name="father_email" ng-model="app.father_email" required />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control input-req" name="mother_email" ng-model="app.mother_email" required />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Address 1</td>
+                                <td>
+                                    <input type="text" class="form-control" name="father_address_one" ng-model="app.father_address_one" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="mother_address_one" ng-model="app.mother_address_one" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Town</td>
+                                <td>
+                                    <input type="text" class="form-control" name="father_town" ng-model="app.father_town" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="mother_town" ng-model="app.mother_town" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Region</td>
+                                <td>
+                                    <input type="text" class="form-control" name="father_region" ng-model="app.father_region" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" name="mother_region" ng-model="app.mother_region" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="req-imp">*</span>Country<br /></td>
+                                <td>
+                                    <select class="form-control input-req" name="father_country" ng-model="app.father_country" required>
+							<option></option>
+							<option ng-repeat="country in vm.datas.COUN | orderBy: 'description'" value='{{ country.code }}'>{{ country.description }}</option>
+						</select>
+                                </td>
+                                <td>
+                                    <select class="form-control input-req" name="mother_country" ng-model="app.mother_country" required>
+							<option></option>
+							<option ng-repeat="country in vm.datas.COUN | orderBy: 'description'" value='{{ country.code }}'>{{ country.description }}</option>
+						</select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <h2>Learning Resources & Health Information</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered health-info">
+                        <tbody>
+                            <tr ng-repeat="lh in vm.LearningResourcesHealthInformation">
+                                <td>{{ lh.question }}</td>
+                                <td>
+                                    <div class="" ng-if="lh.choice.length > 0 && !lh.isMulti">
+                                        <div class="col-xs-6" ng-repeat="c in lh.choice" ng-class="c.length > 2 ? 'col-sm-4' : 'col-sm-6'"><input type="radio" name="lhinfo_{{ lh.id }}" ng-model="app.lhinfo[lh.id]" value="{{ c.value }}"
+                                            /> {{ c.display }}</div>
+                                    </div>
+                                    <div class="" ng-if="lh.choice.length > 0 && lh.isMulti">
+                                        <div class="col-xs-6" ng-repeat="c in lh.choice" ng-class="c.length > 2 ? 'col-sm-4' : 'col-sm-6'"><input type="checkbox" name="lhinfo_{{ lh.id }}" ng-model="app.lhinfo[lh.id]" value="{{ c.value }}"
+                                            /> {{ c.display }}</div>
+                                    </div>
+                                    <div class="" ng-if="lh.text">
+                                        <input type="text" name="lh_info_{{ lh.id }}" ng-model="app.lhinfo[lh.id]" class="form-control" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-xs-12">
+                <h2>TRANSPORTATION </h2>
+                <div class="content">
+                    <p class="">If you require transportation please contact the DIS Transport Coordinator <a href="mailto:transportation@disdubai.ae"
+                            target="_blank">transportation@disdubai.ae</a> to check availability and to fill the form
+                    </p>
+                    If you require transportation, please select:
+                    <label><input type="checkbox" name="transport_required" ng-model="app.reqd_transportation" ng-change="transportReqd();" /> Yes</label>
+                    <div class="mt10" ng-if="app.reqd_transportation">
+                        <strong>Note:</strong> Transportation is only comfirmed, when parents sign the concent form when
+                        they meet DIS Transport Coordinator<br /> What service do you require ?
+                        <label class="mr10"><input type="checkbox" name="two_ways_transport" ng-model="app.transport.two_way" /> Two Ways</label>
+                        <label class="mr10"><input type="checkbox" name="two_ways_transport" ng-model="app.transport.pick_up" /> Pick-up Only</label>
+                        <label><input type="checkbox" name="two_ways_transport" ng-model="app.transport.drop_off" /> Drop-off Only</label><br
+                        />
+                        <label for="starting_date">Starting Date</label>
+                        <input type="date" placeholder="dd/mm/yyyy" name="transport_start_date" ng-model="app.transport.start_date" /><br
+                        /><br /> Name and contact number of person to call in case of emergency<br /><br />
+                        <div class="col-sm-2"><label>Name</label></div>
+                        <div class="col-sm-4"><input class="form-control" type="text" name="emergency_name_1" ng-model="app.transport.emergency_name_1"
+                            /></div>
+                        <div class="col-sm-2"><label>Number (UAE Local Only)</label></div>
+                        <div class="col-sm-4"><input class="form-control" type="text" name="emergency_number_1" ng-model="app.transport.emergency_number_1"
+                            /></div>
+                        <div class="clearfix"></div>
+                        <div class="col-sm-2"><label>Name</label></div>
+                        <div class="col-sm-4"><input class="form-control" type="text" name="emergency_name_2" ng-model="app.transport.emergency_name_2"
+                            /></div>
+                        <div class="col-sm-2"><label>Number (UAE Local Only)</label></div>
+                        <div class="col-sm-4"> <input class="form-control" type="text" name="emergency_number_2" ng-model="app.transport.emergency_number_2"
+                            /> </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <h2>BROTHERS AND SISTERS IN/APPLYING TO DIS (MANDATORY)</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr style="background-color: #d8d8d8;">
+                                <th></th>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>School</th>
+                                <th>Age</th>
+                                <th>Year<br />(Grade)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="brosis">
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="brosis_student_id[]" ng-model="app.brosis.student_id[0]" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="brosis_name[]" ng-model="app.brosis.name[0]" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="brosis_school[]" ng-model="app.brosis.school[0]" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="brosis_age[]" ng-model="app.brosis.age[0]" size="2" maxlength="2" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <select class="form-control" name="brosis_grade[]" ng-model="app.brosis.grade[0]">
+							<option></option>
+							<option ng-repeat="grades in vm.datas.OCP| filter:{'CAT_TYPE': 'GRADE_YEAR'}" value='{{ grades.code }}'>{{ grades.description }}</option>
+						</select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6"><button ng-click="add_more_brosis()" type="button" class="btn-link"><span class="glyphicon glyphicon-plus"></span> Add</button></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <h2>USE OF PHOTOGRAPH/VIDEO (MANDATORY)</h2>
+                <div class="content">
+                    <p>Do you object to your child's photographs/video being used for future school marketing purposes? Check
+                        if Yes. </p>
+                    <label class="mr20"><input type="radio" ng-checked="true" value="yes" ng-model="app.prohibit_video_photo" /> Yes </label>
+                    <label><input type="radio" value="no" ng-model="app.prohibit_video_photo" /> No</label>
+                </div>
+            </div>
+
+
+            <div class="col-xs-12">
+                <h2>DOCUMENTS</h2>
+                <div class="content">
+                    <div class="col-xs-12 col-sm-6">
+                        <strong class="mb5 pull-left w100">Documents to submnit before testing</strong>
+                        <div ng-repeat="d in vm.documents | filter: {'position': 'left'} | orderBy: 'SortOrder'"><label><input type="checkbox" name="{{d.id}}" ng-model="app.docs.left[d.id]" /> {{ d.display }}</label></div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <strong class="mb5 pull-left w100">Upon acceptance, documents to submit to complete registration</strong>
+                        <div ng-repeat="d in vm.documents | filter: {'position': 'right'} | orderBy: 'SortOrder'"><label><input type="checkbox" name="{{d.id}}" ng-model="app.docs.right[d.id]" /> {{ d.display }}</label></div>
+                    </div>
+                    <div class="col-xs-12 mt10">
+                        <p><strong>Failing to submit any of the above documents, your application will not be considered</strong></p>
+                    </div>
+                    <div class="col-xs-12" ng-init="getTNC();">
+                        <div ng-bind-html="tnc"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 mt20">
+                <button class="btn btn-primary " style="float: left;"><span class="glyphicon glyphicon-chevron-left"></span> Back</button>
+                <button class="btn btn-success " style="float: right;" type="button" ng-disabled="stu_app.$invalid" ng-click="submit_data();"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+            </div>
+
+        </div>
+    </form>
+</div>

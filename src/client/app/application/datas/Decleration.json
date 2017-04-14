@@ -1,0 +1,11 @@
+{
+	"html": """
+<label>
+	<input type='checkbox' ng-model='app.tnc' />
+	I certify that the above information is accurate and correct to the best of my knowledge.
+	I understand that failure to provide <strong>accurate information </strong>and <strong>academic reports </strong>may result in the <strong>annulment of the school’s acceptance offer</strong>.
+	Upon acceptance, an advance fee of 30% of the annual fee should be paid per student and further documents must be submitted.
+	The <strong>booking Fee of 3000Dhs </strong>will be deducted from the 30% fee.
+	The <strong>booking Fee will not be refunded </strong>if the student chooses not to take the offered place.
+</label>""";
+};

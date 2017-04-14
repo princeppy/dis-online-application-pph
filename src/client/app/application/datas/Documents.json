@@ -1,0 +1,107 @@
+[
+	{
+		"id": "3yrsGradesReports",
+		"position": "left",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Grades/Reports, minimum of 3 years back",
+		"Session": "Session1",
+		"SortOrder": 1
+	}, {
+		"id": "birthCertificate",
+		"position": "left",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Birth Certificate - English or Arabic",
+		"Session": "Session1",
+		"SortOrder": 2
+	}, {
+		"id": "passportCopyStudent",
+		"position": "left",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Passport copy - Student",
+		"Session": "Session1",
+		"SortOrder": 3
+	}, {
+		"id": "passportCopyParent",
+		"position": "left",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Passport copy - Parent",
+		"Session": "Session1",
+		"SortOrder": 4
+	}, {
+		"id": "healthForms",
+		"position": "left",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Health Forms",
+		"Session": "Session1",
+		"SortOrder": 5
+	}, {
+		"id": "immunizationRecords",
+		"position": "left",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Immunization Records",
+		"Session": "Session1",
+		"SortOrder": 6
+	}, {
+		"id": "originalTransferCertificate",
+		"position": "right",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Original Transfer Certificate",
+		"Session": "Session1",
+		"SortOrder": 1
+	}, {
+		"id": "6picturesStudent",
+		"position": "right",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "6 pictures - Student",
+		"Session": "Session1",
+		"SortOrder": 2
+	}, {
+		"id": "residencyVisaStudent",
+		"position": "right",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Residency Visa - Student",
+		"Session": "Session1",
+		"SortOrder": 3
+	}, {
+		"id": "residencyVisaParent",
+		"position": "right",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Residency Visa - Parent",
+		"Session": "Session1",
+		"SortOrder": 4
+	}, {
+		"id": "800DhsTestFee",
+		"position": "right",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "800 Dhs Test Fee (non-refundable)",
+		"Session": "Session1",
+		"SortOrder": 5
+	}, {
+		"id": "emiratesIdForAll",
+		"position": "right",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Emirates Id for all",
+		"Session": "Session1",
+		"SortOrder": 6
+	}, {
+		"id": "transportationForm",
+		"position": "right",
+		"isSelected": true,
+		"isLocked": false,
+		"display": "Transportation Form (if required)",
+		"Session": "Session1",
+		"SortOrder": 7
+	}
+]
