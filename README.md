@@ -8,6 +8,7 @@ dis-admission-application
     Make sure the following packages are installed
     ```
     npm install -g express
+    npm install -g grunt-cli
     npm install -g yo
     npm install -g generator-angular
     npm install -g generator-karma

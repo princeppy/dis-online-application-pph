@@ -13,8 +13,8 @@
   }
 
   var config = {
-    appErrorPrefix: '[dis-online-admission Error] ',
-    appTitle: 'dis-online-admission'
+    appErrorPrefix: '[D Error] ',
+    appTitle: 'DIS Online Application'
   };
 
   core.value('config', config);
